@@ -2,21 +2,17 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import joblib
-import google.generativeai as genai
 
-#  Load Gemini API Key from Streamlit Secrets
-genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
-
-#  Load model and scaler
+# Load model and scaler
 model = joblib.load("heart_disease_model.pkl")
 scaler = joblib.load("heart_scaler.pkl")
 
-#  Streamlit page config
+# Streamlit page config
 st.set_page_config(page_title="Heart Disease Predictor", page_icon="💓")
 st.title("💓 Heart Disease Predictor")
-st.markdown("Predict the **risk of heart disease** and get **AI health advice** with Gemini.")
+st.markdown("Predict the **risk of heart disease** using machine learning.")
 
-#  User input form
+# User input form
 def user_input():
     age = st.number_input("Age", 18, 100, 45)
     sex = st.selectbox("Sex", ("Male", "Female"))
@@ -38,27 +34,10 @@ def user_input():
                       thalach, exang, oldpeak, slope, ca, thal]])
     return data
 
-#  Gemini AI Advice Generator
-def get_health_advice(prediction: int) -> str:
-    prompt = f"""
-You are a friendly AI health assistant. A patient was predicted to have {"high" if prediction == 1 else "no significant"} risk of heart disease.
-
-1. Explain clearly what this result means.
-2. Mention common causes or risk factors.
-3. Give basic prevention tips (diet, lifestyle).
-4. Recommend if/when they should consult a doctor.
-
-Make your tone reassuring and simple.
-"""
-    model = genai.GenerativeModel("models/chat-bison-001")
-    chat = model.start_chat()
-    response = chat.send_message(prompt)
-    return response.text.strip()
-
-# 🚦 Run Prediction
+# Run Prediction
 input_data = user_input()
 
-if st.button(" Predict"):
+if st.button("Predict"):
     scaled = scaler.transform(input_data)
     prediction = model.predict(scaled)[0]
     proba = model.predict_proba(scaled)[0]
@@ -72,14 +51,7 @@ if st.button(" Predict"):
     st.markdown(f"### Model Confidence: `{confidence}%`")
     st.progress(int(confidence))
 
-    #  Risk Chart
+    # Risk Probability Chart
     st.markdown("### Risk Probability")
     df = pd.DataFrame([proba], columns=["No Disease", "Disease"])
     st.bar_chart(df.T)
-
-    # 💡 Gemini Health Advice
-    if st.button(" Get AI Health Advice"):
-        with st.spinner(" Gemini is preparing your health guidance..."):
-            advice = get_health_advice(prediction)
-            st.markdown("###  AI-Generated Health Advice")
-            st.write(advice)
