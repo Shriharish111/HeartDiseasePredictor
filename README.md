@@ -88,22 +88,22 @@ streamlit run app.py
 🌐 Live Demo
 🔗 Click here to launch the app on Streamlit Cloud
 
-📊 Dataset Information
-Source: UCI Heart Disease Dataset
+## 📊 Dataset Information
+ - Source: UCI Heart Disease Dataset
 
-Attributes Used:
-Age, Sex, Chest Pain Type, Resting Blood Pressure, Cholesterol, Fasting Blood Sugar, Resting ECG, Max Heart Rate, Exercise-induced Angina, ST Depression, Slope, Number of Major Vessels, Thalassemia
+ - Attributes Used:
+      Age, Sex, Chest Pain Type, Resting Blood Pressure, Cholesterol, Fasting Blood Sugar, Resting ECG, Max Heart Rate, Exercise-induced Angina, ST Depression, Slope, Number     of Major Vessels, Thalassemia
 
-Target Label:
-1 = Disease present, 0 = No disease
+ - Target Label:
+   1 = Disease present, 0 = No disease
 
-👨‍💻 Author
+## 👨‍💻 Author
 Made with ❤️ by Shri Harish
-🎓 Final Year CSE (AIML) Student
-🎮 Passionate about Single-Player Games & Game Development
-🚀 Building real-world projects in AI & Python
+ - 🎓 Final Year CSE (AIML) Student
+ - 🎮 Passionate about Single-Player Games & Game Development
+ - 🚀 Building real-world projects in AI & Python
 
-⚠️ Disclaimer
-This tool is for educational and informational purposes only.
-It does not provide medical diagnosis and should not be used as a substitute for professional healthcare advice.
+## ⚠️ Disclaimer
+ - This tool is for educational and informational purposes only.
+ - It does not provide medical diagnosis and should not be used as a substitute for professional healthcare advice.
 
