@@ -59,7 +59,8 @@ Edit
 
 1. **Clone the repository:**
 
-```bash
+```
+bash
 git clone https://github.com/Shriharish111/HeartDiseasePredictor.git
 cd HeartDiseasePredictor
 Create and activate a virtual environment:
@@ -83,6 +84,7 @@ bash
 Copy
 Edit
 streamlit run app.py
+```
 🌐 Live Demo
 🔗 Click here to launch the app on Streamlit Cloud
 
